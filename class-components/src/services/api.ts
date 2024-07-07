@@ -17,11 +17,11 @@ interface Person {
   url: string;
 }
 
-interface Results {
+export interface Persons {
   results: Person[];
 }
 
-async function getData() {
+async function getData(): Promise<Persons> {
   try {
     const response = await fetch('https://swapi.dev/api/people/', {
       method: 'GET',
@@ -29,11 +29,10 @@ async function getData() {
 
     const data = await response.json();
 
-    const person: Results = data.results;
-
-    return person;
+    return data;
   } catch (error) {
     console.error(error);
+    return { results: [] };
   }
 }
 

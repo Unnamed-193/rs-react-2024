@@ -1,0 +1,9 @@
+.searchBox {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.input {
+  width: 100%;
+}

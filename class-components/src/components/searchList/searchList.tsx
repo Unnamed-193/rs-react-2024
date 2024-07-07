@@ -1,25 +1,24 @@
 import { Component } from 'react';
+import getData, { Persons } from '../../services/api';
 
-interface SearchResult {
-  title: string;
-  description: string;
-}
+class SearchList extends Component<object, Persons> {
+  state: Persons = {
+    results: [],
+  };
 
-interface SearchResultsProps {
-  results: SearchResult[];
-}
+  async componentDidMount() {
+    const data: Persons = await getData();
+    this.setState({ results: data.results });
+  }
 
-class SearchList extends Component<SearchResultsProps> {
   render() {
+    const { results } = this.state;
     return (
-      <div>
-        {this.props.results.map((result, index) => (
-          <div key={index}>
-            <h3>{result.title}</h3>
-            <p>{result.description}</p>
-          </div>
+      <ul>
+        {results.map((person) => (
+          <li key={person.name}>{person.name}</li>
         ))}
-      </div>
+      </ul>
     );
   }
 }
