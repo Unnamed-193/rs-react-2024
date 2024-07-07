@@ -21,7 +21,7 @@ export default tslint.config(
     },
   },
   {
-    ignores: ['node_modules', 'dist', 'eslint.config.js', 'coverage'],
+    ignores: ['node_modules', 'dist', 'eslint.config.js', 'coverage', 'commitlint.config.cjs'],
   },
   js.configs.recommended,
   ...tslint.configs.recommended,
