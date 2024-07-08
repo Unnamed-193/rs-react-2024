@@ -4,14 +4,14 @@ import SearchItem from '../searchItem/searchItem';
 import style from './searchList.module.css';
 import Loader from '../UI/loader/loader';
 
-export interface SearchResultProps {
+interface SearchListProps {
   results: Person[];
   loading: boolean;
   errorMes: string;
   error: boolean;
 }
 
-class SearchList extends Component<SearchResultProps> {
+class SearchList extends Component<SearchListProps> {
   render() {
     const { results, loading, error, errorMes } = this.props;
     if (loading) {

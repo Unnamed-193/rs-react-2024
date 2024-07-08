@@ -1,13 +1,13 @@
 import { ChangeEvent, Component } from 'react';
 import style from './searchForm.module.css';
 
-interface SearchProps {
+interface SearchFormProps {
   onSearch: () => void;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   searchQuery: string;
 }
 
-class SearchForm extends Component<SearchProps> {
+class SearchForm extends Component<SearchFormProps> {
   render() {
     const { onSearch, onChange, searchQuery } = this.props;
 
