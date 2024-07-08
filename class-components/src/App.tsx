@@ -78,10 +78,8 @@ class App extends Component<object, AppState> {
             searchQuery={searchQuery}
             onChange={this.handleChange}
             onSearch={this.handleSearch}
+            onErrorTest={this.getError}
           />
-          <button onClick={this.getError} style={{ marginBottom: 30 }}>
-            Test error
-          </button>
           <SearchList
             searchQuery={searchQuery}
             results={results}

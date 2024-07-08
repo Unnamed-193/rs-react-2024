@@ -13,6 +13,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  background-image: url('../public/darth-vader.jpg');
+  background-position: top;
+  background-repeat: repeat-y;
+  background-size: contain;
+}
+
 h1,
 h2,
 h3,
@@ -57,6 +64,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  white-space: nowrap;
 }
 button:hover {
   border-color: #646cff;
