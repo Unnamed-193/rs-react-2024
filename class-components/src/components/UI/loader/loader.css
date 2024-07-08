@@ -27,7 +27,7 @@
   stroke: black;
   stroke-width: 30;
   fill: transparent;
-  
+
   stroke-dasharray: 100px 5px;
   animation: spin 1s ease-in-out infinite alternate;
 }
@@ -35,7 +35,7 @@
 @keyframes spin {
   0% {
     stroke-dashoffset: 500;
-    opacity: .5;
+    opacity: 0.5;
   }
   100% {
     stroke-dashoffset: 0;
@@ -54,12 +54,12 @@
 
 @keyframes blink {
   0% {
-    opacity: .5;
+    opacity: 0.5;
   }
   50% {
     opacity: 1;
   }
   100% {
-    opacity: .5;
+    opacity: 0.5;
   }
 }
