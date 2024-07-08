@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import getData, { Persons } from '../../services/api';
+import SearchItem from '../searchItem/searchItem';
+import style from './searchList.module.css';
 
 class SearchList extends Component<object, Persons> {
   state: Persons = {
@@ -13,10 +15,11 @@ class SearchList extends Component<object, Persons> {
 
   render() {
     const { results } = this.state;
+
     return (
-      <ul>
+      <ul className={style.list}>
         {results.map((person) => (
-          <li key={person.name}>{person.name}</li>
+          <SearchItem key={person.name} person={person} />
         ))}
       </ul>
     );

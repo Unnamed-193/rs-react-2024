@@ -8,8 +8,6 @@ class SearchForm extends Component {
 
   handleSearch = () => {
     console.log(1);
-
-    // Реализация поиска и работы с локальным хранилищем
   };
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
