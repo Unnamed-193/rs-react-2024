@@ -7,7 +7,7 @@ class SearchForm extends Component {
   };
 
   handleSearch = () => {
-    console.log(1);
+    localStorage.setItem('searchQuery', this.state.searchQuery);
   };
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

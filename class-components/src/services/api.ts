@@ -19,20 +19,41 @@ export interface Person {
 
 export interface Persons {
   results: Person[];
+  loading: boolean;
 }
 
-async function getData(): Promise<Persons> {
+async function getAllData(url: string, allData: Persons): Promise<Persons> {
   try {
-    const response = await fetch('https://swapi.dev/api/people/', {
+    const response = await fetch(url, {
       method: 'GET',
     });
 
     const data = await response.json();
 
-    return data;
+    allData.results = allData.results.concat(data.results);
+
+    if (data.next) {
+      return getAllData(data.next, allData);
+    } else {
+      return allData;
+    }
   } catch (error) {
     console.error(error);
-    return { results: [] };
+    return { results: [], loading: true };
+  }
+}
+
+async function getData(): Promise<Persons> {
+  const allData: Persons = {
+    results: [],
+    loading: true,
+  };
+
+  try {
+    return getAllData('https://swapi.dev/api/people/', allData);
+  } catch (error) {
+    console.error(error);
+    return { results: [], loading: true };
   }
 }
 
