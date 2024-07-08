@@ -9,11 +9,12 @@ interface SearchListProps {
   loading: boolean;
   errorMes: string;
   error: boolean;
+  searchQuery: string;
 }
 
 class SearchList extends Component<SearchListProps> {
   render() {
-    const { results, loading, error, errorMes } = this.props;
+    const { results, loading, error, errorMes, searchQuery } = this.props;
     if (loading) {
       return <Loader />;
     }
@@ -25,11 +26,27 @@ class SearchList extends Component<SearchListProps> {
     return (
       <>
         {error && <p>{errorMes}</p>}
-        <ul className={style.list}>
-          {results.map((person) => (
-            <SearchItem key={person.name} person={person} />
-          ))}
-        </ul>
+        {searchQuery ? (
+          <>
+            {results.filter((person) =>
+              person.name.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
+            ).length > 0 ? (
+              <ul className={style.list}>
+                {results.map((person) => (
+                  <SearchItem key={person.name} person={person} />
+                ))}
+              </ul>
+            ) : (
+              <p>No results found for the search query</p>
+            )}
+          </>
+        ) : (
+          <ul className={style.list}>
+            {results.map((person) => (
+              <SearchItem key={person.name} person={person} />
+            ))}
+          </ul>
+        )}
       </>
     );
   }

@@ -82,7 +82,13 @@ class App extends Component<object, AppState> {
           <button onClick={this.getError} style={{ marginBottom: 30 }}>
             Test error
           </button>
-          <SearchList results={results} loading={loading} error={error} errorMes={errorMes} />
+          <SearchList
+            searchQuery={searchQuery}
+            results={results}
+            loading={loading}
+            error={error}
+            errorMes={errorMes}
+          />
         </div>
       </ErrorBoundary>
     );
