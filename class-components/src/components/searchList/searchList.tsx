@@ -1,38 +1,36 @@
 import { Component } from 'react';
-import getData, { Persons } from '../../services/api';
+import { Person } from '../../services/api';
 import SearchItem from '../searchItem/searchItem';
 import style from './searchList.module.css';
 import Loader from '../UI/loader/loader';
 
-class SearchList extends Component<object, Persons> {
-  state: Persons = {
-    results: [],
-    loading: true,
-  };
+export interface SearchResultProps {
+  results: Person[];
+  loading: boolean;
+  errorMes: string;
+  error: boolean;
+}
 
-  async componentDidMount() {
-    try {
-      const data: Persons = await getData();
-      this.setState({ results: data.results, loading: false });
-    } catch (error) {
-      console.error('Error fetching data');
-      this.setState({ loading: false });
-    }
-  }
-
+class SearchList extends Component<SearchResultProps> {
   render() {
-    const { results, loading } = this.state;
-
+    const { results, loading, error, errorMes } = this.props;
     if (loading) {
       return <Loader />;
     }
 
+    if (error) {
+      throw Error(errorMes);
+    }
+
     return (
-      <ul className={style.list}>
-        {results.map((person) => (
-          <SearchItem key={person.name} person={person} />
-        ))}
-      </ul>
+      <>
+        {error && <p>{errorMes}</p>}
+        <ul className={style.list}>
+          {results.map((person) => (
+            <SearchItem key={person.name} person={person} />
+          ))}
+        </ul>
+      </>
     );
   }
 }

@@ -1,20 +1,7 @@
 export interface Person {
   name: string;
-  height: string;
-  mass: string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
   birth_year: string;
   gender: string;
-  homeworld: string;
-  films: string[];
-  species?: string[];
-  vehicles?: string[];
-  starships?: string[];
-  created: string;
-  edited: string;
-  url: string;
 }
 
 export interface Persons {
@@ -43,7 +30,7 @@ async function getAllData(url: string, allData: Persons): Promise<Persons> {
   }
 }
 
-async function getData(): Promise<Persons> {
+export async function getData(): Promise<Persons> {
   const allData: Persons = {
     results: [],
     loading: true,
@@ -57,4 +44,16 @@ async function getData(): Promise<Persons> {
   }
 }
 
-export default getData;
+export async function searchPerson(querySearch: string) {
+  try {
+    const response = await fetch(`https://swapi.dev/api/people/?search=${querySearch}`, {
+      method: 'GET',
+    });
+
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error(error);
+    return { results: [], loading: true };
+  }
+}
