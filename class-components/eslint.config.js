@@ -49,6 +49,7 @@ export default tslint.config(
       'max-lines': ['warn', { max: 124 }],
       'react-compiler/react-compiler': 'error',
       'no-var': 'error',
+      '@typescript-eslint/no-explicit-any': 'error',
     },
   }
 );
