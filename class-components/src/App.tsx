@@ -25,8 +25,6 @@ class App extends Component<object, AppState> {
   }
 
   getFetchData = async (querySearch: string) => {
-    console.log(querySearch);
-
     try {
       if (querySearch) {
         const person = await searchPerson(querySearch);
