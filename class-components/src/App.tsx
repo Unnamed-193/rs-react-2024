@@ -3,7 +3,7 @@ import './App.css';
 import SearchForm from './components/SearchForm/SearchForm.tsx';
 import SearchList from './components/SearchList/SearchList.tsx';
 import { getData, searchPerson } from './services/api';
-import { AppState } from './AppTypes.ts';
+import { AppState } from './appTypes.ts';
 
 class App extends Component<object, AppState> {
   state: AppState = {

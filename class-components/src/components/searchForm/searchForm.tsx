@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import style from './searchForm.module.css';
-import { SearchFormProps } from './SearchForm';
+import { SearchFormProps } from './searchForm';
 
 class SearchForm extends Component<SearchFormProps> {
   render() {
