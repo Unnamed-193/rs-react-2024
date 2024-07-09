@@ -1,31 +1,23 @@
 import { Component } from 'react';
-import { Person } from '../../services/api';
-import SearchItem from '../searchItem/searchItem';
+import SearchItem from '../SearchItem/SearchItem';
 import style from './searchList.module.css';
-import Loader from '../UI/loader/loader';
-
-interface SearchListProps {
-  results: Person[];
-  loading: boolean;
-  errorMes: string;
-  error: boolean;
-  searchQuery: string;
-}
+import Loader from '../UI/Loader/Loader.tsx';
+import { SearchListProps } from './SearchList.ts';
 
 class SearchList extends Component<SearchListProps> {
   render() {
-    const { results, loading, error, errorMes, searchQuery } = this.props;
+    const { results, loading, error, errorMessage, searchQuery } = this.props;
     if (loading) {
       return <Loader />;
     }
 
     if (error) {
-      throw Error(errorMes);
+      throw Error(errorMessage);
     }
 
     return (
       <>
-        {error && <p>{errorMes}</p>}
+        {error && <p>{errorMessage}</p>}
         {searchQuery ? (
           <>
             {results.filter((person) =>

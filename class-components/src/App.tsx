@@ -1,17 +1,9 @@
 import { Component, ReactNode } from 'react';
 import './App.css';
-import SearchForm from './components/searchForm/searchForm';
-import SearchList from './components/searchList/searchList';
-import { getData, searchPerson, Person } from './services/api';
-import ErrorBoundary from './components/errorBoundary/errorBoundary';
-
-interface AppState {
-  results: Person[];
-  searchQuery: string;
-  loading: boolean;
-  error: boolean;
-  errorMes: string;
-}
+import SearchForm from './components/SearchForm/SearchForm.tsx';
+import SearchList from './components/SearchList/SearchList.tsx';
+import { getData, searchPerson } from './services/api';
+import { AppState } from './AppTypes.ts';
 
 class App extends Component<object, AppState> {
   state: AppState = {
@@ -19,7 +11,7 @@ class App extends Component<object, AppState> {
     loading: true,
     results: [],
     error: false,
-    errorMes: '',
+    errorMessage: '',
   };
 
   componentDidMount() {
@@ -33,11 +25,13 @@ class App extends Component<object, AppState> {
   }
 
   getFetchData = async (querySearch: string) => {
+    console.log(querySearch);
+
     try {
       if (querySearch) {
         const person = await searchPerson(querySearch);
         this.setState({ results: person, loading: false });
-      } else if (querySearch === '') {
+      } else {
         const data = await getData();
         this.setState({ results: data.results, loading: false });
       }
@@ -63,32 +57,30 @@ class App extends Component<object, AppState> {
   };
 
   getError = () => {
-    this.setState({ error: true, errorMes: 'Opps! This is test error, just refresh page :)' });
+    this.setState({ error: true, errorMessage: 'Opps! This is test error, just refresh page :)' });
   };
 
   render(): ReactNode {
-    const { results, loading, searchQuery, errorMes, error } = this.state;
+    const { results, loading, searchQuery, errorMessage, error } = this.state;
 
     return (
-      <ErrorBoundary>
-        <div className='container'>
-          <h1 className='title'>Star Wars characters</h1>
+      <div className='container'>
+        <h1 className='title'>Star Wars characters</h1>
 
-          <SearchForm
-            searchQuery={searchQuery}
-            onChange={this.handleChange}
-            onSearch={this.handleSearch}
-            onErrorTest={this.getError}
-          />
-          <SearchList
-            searchQuery={searchQuery}
-            results={results}
-            loading={loading}
-            error={error}
-            errorMes={errorMes}
-          />
-        </div>
-      </ErrorBoundary>
+        <SearchForm
+          searchQuery={searchQuery}
+          onChange={this.handleChange}
+          onSearch={this.handleSearch}
+          onErrorTest={this.getError}
+        />
+        <SearchList
+          searchQuery={searchQuery}
+          results={results}
+          loading={loading}
+          error={error}
+          errorMessage={errorMessage}
+        />
+      </div>
     );
   }
 }

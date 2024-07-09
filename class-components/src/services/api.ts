@@ -1,3 +1,5 @@
+import { API_PERSON, API_URL } from './apiUrl';
+
 export interface Person {
   name: string;
   birth_year: string;
@@ -37,7 +39,7 @@ export async function getData(): Promise<Persons> {
   };
 
   try {
-    return getAllData('https://swapi.dev/api/people/', allData);
+    return getAllData(API_URL, allData);
   } catch (error) {
     console.error(error);
     return { results: [], loading: true };
@@ -46,7 +48,7 @@ export async function getData(): Promise<Persons> {
 
 export async function searchPerson(querySearch: string) {
   try {
-    const response = await fetch(`https://swapi.dev/api/people/?search=${querySearch}`, {
+    const response = await fetch(`${API_PERSON}${querySearch}`, {
       method: 'GET',
     });
 

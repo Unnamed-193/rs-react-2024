@@ -1,5 +1,6 @@
 import { Component, ReactNode } from 'react';
 import { ErrorInfo } from 'react-dom/client';
+import style from './ErrorBoundary.module.css';
 
 type ErrorBoundaryProps = {
   children: ReactNode;
@@ -26,14 +27,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   render() {
     if (this.state.hasError) {
       return (
-        <h1
-          style={{
-            height: '100vh',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
+        <h1 className={style.errorTitle}>
           May the force be with you with test error! Refresh page 😊
         </h1>
       );
