@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import SearchItem from '../searchItem/searchItem.tsx';
+import SearchItem from '../searchItem/SearchItem';
 import style from './searchList.module.css';
-import Loader from '../UI/loader/loader.tsx';
+import Loader from '../UI/loader/Loader';
 import { SearchListProps } from './searchList.ts';
 
 class SearchList extends Component<SearchListProps> {
