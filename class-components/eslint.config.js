@@ -50,6 +50,12 @@ export default tslint.config(
       'react-compiler/react-compiler': 'error',
       'no-var': 'error',
       '@typescript-eslint/no-explicit-any': 'error',
+      'prettier/prettier': [
+        'error',
+        {
+          endOfLine: 'auto',
+        },
+      ],
     },
   }
 );
