@@ -1,6 +1,12 @@
-import { Component } from 'react';
+import { ChangeEvent, Component } from 'react';
 import style from './searchForm.module.css';
-import { SearchFormProps } from './searchForm';
+
+interface SearchFormProps {
+  onSearch: () => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onErrorTest: () => void;
+  searchQuery: string;
+}
 
 class SearchForm extends Component<SearchFormProps> {
   render() {

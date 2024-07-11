@@ -1,7 +1,14 @@
-import { Component } from 'react';
+import { Component, ReactNode } from 'react';
 import { ErrorInfo } from 'react-dom/client';
 import style from './ErrorBoundary.module.css';
-import { ErrorBoundaryProps, ErrorBoundaryState } from './errorBoundary';
+
+type ErrorBoundaryProps = {
+  children: ReactNode;
+};
+
+type ErrorBoundaryState = {
+  hasError: boolean;
+};
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {

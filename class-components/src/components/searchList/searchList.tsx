@@ -1,8 +1,16 @@
 import { Component } from 'react';
-import SearchItem from '../searchItem/SearchItem';
+import SearchItem from '../searchItem/searchItem.tsx';
 import style from './searchList.module.css';
-import Loader from '../UI/loader/Loader';
-import { SearchListProps } from './searchList.ts';
+import Loader from '../UI/loader/loader.tsx';
+import { Person } from '../../services/api.ts';
+
+interface SearchListProps {
+  results: Person[];
+  loading: boolean;
+  errorMessage: string;
+  error: boolean;
+  searchQuery: string;
+}
 
 class SearchList extends Component<SearchListProps> {
   render() {

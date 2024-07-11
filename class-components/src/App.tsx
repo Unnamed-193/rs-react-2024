@@ -1,7 +1,7 @@
 import { Component, ReactNode } from 'react';
 import './App.css';
-import SearchForm from './components/searchForm/SearchForm.tsx';
-import SearchList from './components/searchList/SearchList.tsx';
+import SearchForm from './components/searchForm/searchForm.tsx';
+import SearchList from './components/searchList/searchList.tsx';
 import { getData, searchPerson } from './services/api';
 import { AppState } from './appTypes.ts';
 
