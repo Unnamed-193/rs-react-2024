@@ -16,8 +16,8 @@
 body {
   background-image: url('../public/darth-vader.jpg');
   background-position: top;
-  background-repeat: repeat-y;
-  background-size: contain;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 h1,
